@@ -40,7 +40,7 @@ ComplexNumber ComplexNumber::operator/(const ComplexNumber &c){	//fixed
 }
 
 ComplexNumber operator+(double r,ComplexNumber &c){	//no logical errors detected
-	return ComplexNumber(r+c.real+r,c.imag);
+	return ComplexNumber(r+c.real,c.imag);
 }
 
 ComplexNumber operator-(double r,ComplexNumber &c){	//no logical errors detected
