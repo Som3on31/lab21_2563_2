@@ -24,26 +24,26 @@ ComplexNumber ComplexNumber::operator+(const ComplexNumber &c){
 	return ComplexNumber(real+c.real,imag+c.imag);
 }
 
-ComplexNumber ComplexNumber::operator-(const ComplexNumber &c){	
+ComplexNumber ComplexNumber::operator-(const ComplexNumber &c){
 	return ComplexNumber(real-c.real,imag-c.imag);
 }
 
-ComplexNumber ComplexNumber::operator*(const ComplexNumber &c){	//suspeceted to have a logical error
+ComplexNumber ComplexNumber::operator*(const ComplexNumber &c){	//no logical errors detected
 	return ComplexNumber((real*c.real)-(imag*c.imag),(real*c.imag)+(c.real*imag));
 }
 
-ComplexNumber ComplexNumber::operator/(const ComplexNumber &c){	//suspeceted to have a logical error
+ComplexNumber ComplexNumber::operator/(const ComplexNumber &c){	//fixed
 	double abs2 = pow(c.real,2) + pow(c.imag,2);
-	double real_above = (real*c.real)-(imag*c.imag);
-	double imag_above = (real*c.imag)+(c.real*imag);
+	double real_above = (real*c.real)-(imag*c.imag*(-1));
+	double imag_above = (real*c.imag*(-1))+(c.real*imag);
 	return ComplexNumber(real_above/abs2,imag_above/abs2);
 }
 
-ComplexNumber operator+(double r,ComplexNumber &c){	//suspeceted to have a logical error
+ComplexNumber operator+(double r,ComplexNumber &c){	//no logical errors detected
 	return ComplexNumber(r+c.real+r,c.imag);
 }
 
-ComplexNumber operator-(double r,ComplexNumber &c){	//suspeceted to have a logical error
+ComplexNumber operator-(double r,ComplexNumber &c){	//no logical errors detected
 	return ComplexNumber(r-c.real,-c.imag);
 }
 
@@ -85,10 +85,6 @@ ostream & operator<<(ostream &os,const ComplexNumber &c){
 	else return os << 0;
 }
 
-
-
-
-//Write your code here
 
 int main(){
 	ComplexNumber a(1.5,2),b(3.2,-2.5),c(-1,1.2);	
